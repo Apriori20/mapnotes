@@ -314,9 +314,15 @@
     </svg>
 
     <script>
-        document.querySelectorAll('path').forEach(country => {
-            country.addEventListener('click', function() {
-                window.location.href = `countries/${this.id}.html`;
+          document.querySelectorAll('path').forEach(country => {
+            country.addEventListener('click', function(event) {
+                // Prevent any default navigation behavior
+                event.preventDefault();
+                
+                // Check if the country has a specific onclick attribute
+                if (this.getAttribute('onclick')) {
+                    // Execute the onclick attribute's JavaScript
+                    eval(this.getAttribute('onclick'));
             });
         });
     </script>
